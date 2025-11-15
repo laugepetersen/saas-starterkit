@@ -1,0 +1,91 @@
+---
+alwaysApply: true
+---
+
+# Tech Stack
+
+The project uses the following technologies:
+
+- **Yarn** - Package manager of choice
+- **typescript** (TypeScript) - Primary language
+- **next** (Next.js) - Framework (App Router, without 'src' directory)
+- **payload** (PayloadCMS) - Our backend framework.
+- **@payloadcms/db-postgres** (PostgreSQL) - As our database.
+- **tailwindcss** (Tailwind CSS v4) - For styling
+- **shadcn/ui** (Shadcn) - For general components (only if not too custom/complicated)
+- **zod** (ZOD) - Data validation
+- **react-email** (React Email) - For designing emails
+- **resend** (Resend) - API for sending emails
+- **swiper** (SwiperJS) - For creating sliders
+- **lucide-react** (Lucide) - For React icons (if custom icons are not available)
+- **motion** (Framer Motion) - For animations
+
+## Custom Utility Functions
+
+The project includes these frequently used utility functions:
+
+### `cn()` - Class Name Utility
+
+```typescript
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+Purpose: Merge Tailwind classes with conflict resolution.
+
+### `slugify()` - Text to Slug Converter
+
+```typescript
+export function slugify(text: string) {
+  return text.toLowerCase().replace(/ /g, '-').replace(/&/g, 'and')
+}
+```
+
+Purpose: Convert text strings to URL-friendly slugs.
+
+## Project Folder Structure
+
+The project follows this directory structure:
+
+```
+/app
+  /api          # NextJS API routes
+
+/components
+  /atoms        # Basic components (e.g., buttons, headings, icons)
+  /molecules    # Composite components (e.g., accordions, modals, cards)
+  /globals      # Global components (e.g., header, footer)
+  /sections     # Page building blocks (e.g., hero-section, text-image-section, team-section)
+
+/emails         # React-email designs
+
+/lib
+  /data         # .ts files for JSON data (when no database is used)
+                # Examples: cases.ts, services.ts
+  utils.ts      # Helper functions (e.g., cn() utility function, slugify() utility function)
+  types.ts      # TypeScript type definitions for data
+```
+
+## NextJS Page Requirements
+
+All NextJS pages/components MUST follow these requirements:
+
+1. **Use React Functional Components** - No class components
+2. **Declare Props Interface** - Always define an interface for component props
+3. **Destructure Props** - Always destructure props in the function signature to access them directly
+
+```typescript
+export function Page(props: PropsInterface) {
+  const {text, slides, darkMode} = props;
+  return ()
+}
+```
+
+## Code Style Guidelines
+
+- Use TypeScript for all components
+- Use Tailwind CSS classes for styling (avoid inline styles or separate CSS files when possible)
+- Follow the atomic design pattern (atoms → molecules → sections)
+- Export utility functions from `/lib/utils.ts`
+- Define TypeScript types in `/lib/types.ts`
