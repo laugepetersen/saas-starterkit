@@ -1,26 +1,19 @@
-# flyctl launch added from .gitignore
-**/build
-**/dist / media
-**/node_modules
-**/.DS_Store
-**/.env
-**/.next
-**/.vercel
-
-# Payload default media upload directory
-**/public/media
-
-**/public/robots.txt
-**/public/sitemap*.xml
-
-
-# Playwright
-**/node_modules
-test-results
-playwright-report
-blob-report
-playwright/.cache
-
-# flyctl launch added from node_modules/tailwindcss/stubs/.gitignore
-!node_modules/tailwindcss/stubs/**/*
-fly.toml
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.local
+.env.production
+.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+*.pem
+README.md
+.vscode
+.idea
+coverage
+.nyc_output
+*.log
